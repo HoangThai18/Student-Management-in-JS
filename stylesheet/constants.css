@@ -1,0 +1,25 @@
+:root {
+    --cus-aquam: #87b5e9;
+    --cus-mainColor: #4a90e2;
+    --cus-redColor: #e74c3c;
+    --cus-blueColor: blue;
+    --cus-blackColor: black;
+    --cus-tableTitle: #c7d6f3;
+    --cus-noneTableCont: #d3d3d3;
+    --cus-bg-btn: #e29209;
+    --cus-bg-btn-hover: #dfb264;
+    --cus-random-btn: #0074d9;
+    --cus-random-btn-hover: #79a5cc;
+    --cus-text-color-btn: #eeeeee;
+    --cust-btn-boxshadow: rgba(64, 64, 64, 0.1);
+    --cus-boxShadow-hover: rgb(244, 97, 97);
+    --cus-boxShadow-hover-two: rgba(0, 0, 0, 0.2);
+    --cus-text-color-input: rgb(85, 85, 85);
+    --cus-white-color: rgb(252, 252, 252);
+    --cus-boder-input-color: rgb(124, 124, 124);
+    --cus-cancle: #4682b4;
+    --cus-cancle-hover: #b0c4de;
+    --cus-boxsd-toastmgs: rgba(0, 0, 0, 0.2);
+    --cus-toast-mgs-color: #888;
+    --cus-toast-error: #ff623d;
+}

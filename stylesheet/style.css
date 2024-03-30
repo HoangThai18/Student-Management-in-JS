@@ -1,0 +1,551 @@
+@import url(constants.css);
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--cus-blackColor);
+    font-family: Helvetica, Arial, sans-serif !important;
+    font-size: 14px;
+}
+input {
+    font-family: Helvetica, Arial, sans-serif !important;
+}
+
+.p-10 {
+    padding: 10px;
+    border: 2px solid;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.box-cus {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-color {
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid var(--cus-blackColor);
+}
+
+.red-color {
+    background-color: var(--cus-redColor);
+}
+
+.blue-color {
+    background-color: var(--cus-blueColor);
+}
+
+.btnAdd {
+    background-color: var(--cus-greenColor);
+    color: var(--cus-whiteColor);
+}
+
+.btnAdd:hover {
+    opacity: 0.9;
+    color: var(--cus-whiteColor);
+}
+
+.center-table {
+    display: flex;
+    justify-content: center;
+}
+
+/* CSS Table */
+.center-table table {
+    margin: auto;
+    border: 2px solid;
+    border-collapse: separate;
+}
+.table-title {
+    border: 2px solid;
+    border-collapse: collapse;
+}
+
+tr.table-result {
+    border: 2px solid;
+}
+.add-ip-title {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+table.sec-input {
+    border: 1px solid;
+    border-color: var(--cus-blackColor);
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+.sec-input.sec-input-std {
+    width: 100%;
+}
+.ip-sec-add {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 25px;
+    background-color: var(--cus-white-color);
+}
+.sec-input.sec-edit-std {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    display: none;
+    background: var(--cus-white-color);
+}
+
+.sec-input input {
+    padding: 11px;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+    margin: 10px 0;
+}
+.btn-add-box {
+    width: 100%;
+    display: flex;
+}
+
+.btn-box {
+    width: 50%;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: var(--cus-white-color);
+    display: flex;
+    justify-content: flex-end;
+}
+.cus-title {
+    display: flex;
+    justify-content: center;
+}
+.cus-title i {
+    width: 10px;
+}
+/* Table */
+#showResult {
+    width: 70%;
+    margin: 30px;
+}
+.table-title {
+    background-color: var(--cus-mainColor);
+    color: var(--cus-white-color);
+    border: 2px solid var(--cus-blackColor);
+    font-size: 12px;
+    font-weight: 700;
+    width: 12%;
+    padding: 15px 5px;
+}
+.table-title:nth-child(2) {
+    width: 16%;
+}
+
+.table-title i {
+    cursor: pointer;
+    padding-left: 3px;
+}
+.info-cont {
+    padding: 10px 20px;
+    text-align: center;
+    border: 2px solid black;
+    font-size: 12px;
+}
+
+.info-cont-none {
+    background-color: var(--cus-noneTableCont);
+}
+
+.edit-inf {
+    font-size: 14px;
+}
+
+.edit-icon {
+    padding: 5px 10px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--cus-white-color);
+}
+
+.edit-icon:first-child:hover {
+    color: var(--cus-aquam);
+}
+.edit-icon:last-child:hover {
+    color: var(--cus-boxShadow-hover);
+}
+
+.edit-icon:first-child {
+    color: var(--cus-mainColor);
+}
+
+.edit-icon:last-child {
+    color: var(--cus-redColor);
+}
+
+.sec-add-std-title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    color: var(--cus-white-color);
+    background-color: var(--cus-mainColor);
+}
+
+#popUpAddStd {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.cont-btn {
+    height: 100px;
+    text-align: center;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.opti-btn {
+    display: flex;
+    flex-direction: column;
+}
+.show-list-std {
+    display: none;
+}
+
+.cus-add i:hover {
+    background-color: var(--cus-aquam);
+}
+
+.cus-add {
+    border-radius: 50%;
+    border: var(--cus-white-color);
+    list-style-type: none;
+    display: flex;
+    color: var(--cus-white-color);
+    cursor: pointer;
+    align-items: center;
+    justify-content: end;
+    background-color: transparent;
+}
+
+.cus-btn {
+    color: var(--cus-white-color);
+    border: none;
+    border-radius: 5px;
+    box-shadow: var(--cust-btn-boxshadow) 1px 2px 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bolder;
+    min-height: 40px;
+    padding: 12px;
+    text-align: center;
+    transition: 0.3s all;
+    cursor: pointer;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Helvetica, Arial, sans-serif !important;
+}
+
+.random-btn {
+    background-color: var(--cus-bg-btn);
+}
+.random-btn:hover {
+    background-color: var(--cus-bg-btn-hover);
+}
+
+:hover .add-btn {
+    background-color: var(--cus-mainColor);
+}
+.add-btn:hover {
+    background-color: var(--cus-aquam);
+}
+
+.clear-btn {
+    background-color: var(--cus-redColor);
+}
+.clear-btn:hover {
+    background-color: var(--cus-boxShadow-hover);
+}
+
+.update-btn {
+    background-color: var(--cus-mainColor);
+}
+.update-btn:hover {
+    background-color: var(--cus-aquam);
+}
+
+.cancel-btn {
+    background-color: var(--cus-cancle);
+}
+
+.cancel-btn:hover {
+    background-color: var(--cus-cancle-hover);
+}
+
+.cus-btn i {
+    font-size: 12px;
+    padding-right: 8px;
+    margin-bottom: 2px;
+}
+
+.random-btn i,
+.clear-btn i {
+    font-size: 12px;
+}
+.random-btn i {
+    margin-top: 1px;
+}
+.cancel-btn i {
+    margin-top: 3px;
+}
+.center-btn {
+    display: flex;
+    align-items: center;
+}
+.add-a-std,
+.add-list-std,
+.show-list-std {
+    text-align: center;
+}
+.show-list-std {
+    display: none;
+}
+
+.cus-add:hover .sug-btn {
+    display: block !important;
+}
+
+.sug-btn {
+    font-size: 12px;
+    padding: 20px 10px;
+    margin-right: 5px;
+    background-color: var(--cus-white-color);
+    color: var(--cus-mainColor);
+    display: none;
+    background-color: transparent;
+    font-weight: 700;
+}
+
+.cus-add i {
+    font-size: 25px;
+    padding: 15px 15px;
+    margin: 20px 0px;
+    border-radius: 50%;
+    border: var(--cus-white-color);
+    list-style-type: none;
+    display: flex;
+    background-color: var(--cus-mainColor);
+    color: var(--cus-white-color);
+    cursor: pointer;
+}
+
+.cus-btn:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: var(--cus-bg-btn);
+}
+
+.cus-btn:active {
+    opacity: 0.5;
+}
+
+.cus-input-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cus-form {
+    align-items: center;
+    display: flex;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 50%;
+    height: 80px;
+}
+.cus-form button {
+    border-radius: 0px 5px 5px 0px;
+}
+.cus-form input {
+    margin: auto;
+    width: 100%;
+    height: 50%;
+    outline: none;
+    border: none;
+    border: 1px solid var(--cus-boder-input-color);
+    color: var(--cus-text-color-input);
+    text-shadow: 0 0 10px var(--cus-white-color);
+    padding: 0 80px 0 20px;
+    border-radius: 7px;
+    transition: all 1s;
+    font-weight: bolder;
+    float: left;
+    font-size: 14px;
+}
+.cus-form input:hover {
+    box-shadow: 0 0 5px 0 var(--cus-boxShadow-hover),
+        0 10px 10px 0 var(--cus-boxShadow-hover-two);
+    opacity: 0.5;
+}
+.cus-btn-src {
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bolder;
+    min-height: 40px;
+    padding: 8px 16px;
+    text-align: center;
+    transition: 0.3s all;
+    cursor: pointer;
+    position: relative;
+    margin-left: -40px;
+    background-color: transparent;
+}
+
+.cus-btn-src i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.non-edit {
+    background-color: var(--cus-non-color-btn);
+}
+
+.fake-popup {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sec-add-cont {
+    width: 52%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cus-mainColor);
+}
+.form-ip {
+    display: flex;
+    flex-direction: column;
+}
+.table-add-row {
+    width: 49%;
+}
+
+/* Toast Msg*/
+.toast-msg {
+    padding: 15px 0;
+    padding-right: 15px;
+    display: flex;
+    border: 1px solid var(--cus-mainColor);
+    min-width: 350px;
+    max-width: 350px;
+    align-items: center;
+    background-color: var(--cus-white-color);
+    border-radius: 5px;
+    border-left: 5px solid;
+    box-shadow: 0 5px 8px var(--cus-boxsd-toastmgs);
+    animation: slideInLeft ease 0.3s, slideOut linear 1s 2s forwards;
+    transition: all linear 0.3s;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(calc(100% + 10px));
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    to {
+        opacity: 0;
+        transform: translateX(0);
+    }
+}
+
+.toast-msg + .toast-msg {
+    margin-top: 20px;
+}
+
+.toast-icon {
+    font-size: 30px;
+    padding: 0 16px;
+}
+.toast-body {
+    flex-grow: 1;
+}
+.toast-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+.toast-content {
+    font-size: 14px;
+    color: var(--cus-toast-mgs-color);
+    margin-top: 6px;
+    line-height: 1.5;
+}
+#toastMsg {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999999;
+}
+/* Toast color */
+.toast-success {
+    border-color: var(--cus-mainColor);
+    color: var(--cus-mainColor);
+}
+.toast-warning {
+    border-color: var(--cus-bg-btn);
+    color: var(--cus-bg-btn);
+}
+.toast-error {
+    border-color: var(--cus-toast-error);
+    color: var(--cus-toast-error);
+}

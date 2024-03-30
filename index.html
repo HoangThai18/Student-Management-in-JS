@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Object Learning</title>
+        <link rel="stylesheet" href="./stylesheet/style.css" />
+        <link
+            rel="stylesheet"
+            href="./assets/themify-icons/themify-icons.css"
+        />
+        <script
+            src="https://kit.fontawesome.com/de7e524ad5.js"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            type="text/javascript"
+            src="components/objectjs/objectjs.js"
+        ></script>
+    </head>
+    <body>
+        <div id="popUpAddStd" onclick="hidePopUpByOvl()" hidden>
+            <div class="fake-popup">
+                <div class="sec-add-cont">
+                    <p class="sec-add-std-title">Thêm sinh viên</p>
+                    <div
+                        id="secAddStd"
+                        class="sec-input-std sec-input"
+                        onclick="event.stopPropagation()"
+                    >
+                        <div class="ip-sec-add">
+                            <div class="table-add-row">
+                                <div>
+                                    <div class="form-ip">
+                                        <label
+                                            class="add-ip-title"
+                                            for="txtStdId"
+                                            >Mã số sinh viên</label
+                                        >
+                                        <input
+                                            class="input"
+                                            id="txtStdId"
+                                            type="text"
+                                            maxlength="6"
+                                            placeholder="VD: HV0001"
+                                        />
+                                    </div>
+                                    <div class="form-ip">
+                                        <label
+                                            for="txtName"
+                                            class="add-ip-title"
+                                            >Họ và tên học sinh</label
+                                        >
+                                        <input
+                                            class="input"
+                                            id="txtName"
+                                            type="text"
+                                            maxlength="42"
+                                            placeholder="VD: Nguyễn Văn A"
+                                        />
+                                    </div>
+
+                                    <div class="form-ip">
+                                        <label class="add-ip-title" for="txtDob"
+                                            >Ngày tháng năm sinh</label
+                                        >
+                                        <input
+                                            class="input"
+                                            id="txtDob"
+                                            type="date"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-add-row">
+                                <div class="add-ip-title">
+                                    <div class="form-ip">
+                                        <label for="txtScrOne"
+                                            >Điểm thi môn số 1</label
+                                        >
+                                        <input
+                                            class="input"
+                                            id="txtScrOne"
+                                            type="number"
+                                            min="0"
+                                            max="10"
+                                            onkeydown="blockNegative(event)"
+                                            oninput="limitInputLengthAndMaxValue(event)"
+                                            placeholder="VD: 8"
+                                        />
+                                    </div>
+
+                                    <div class="form-ip">
+                                        <label
+                                            class="add-ip-title"
+                                            for="txtScrTwo"
+                                            >Điểm thi môn số 2</label
+                                        >
+                                        <input
+                                            class="input"
+                                            id="txtScrTwo"
+                                            type="number"
+                                            min="0"
+                                            max="10"
+                                            onkeydown="blockNegative(event)"
+                                            oninput="limitInputLengthAndMaxValue(event)"
+                                            placeholder="VD: 8"
+                                        />
+                                    </div>
+
+                                    <div class="form-ip">
+                                        <label
+                                            class="add-ip-title"
+                                            for="txtScrThree"
+                                            >Điểm thi môn số 3</label
+                                        >
+                                        <input
+                                            class="input"
+                                            id="txtScrThree"
+                                            type="number"
+                                            min="0"
+                                            max="10"
+                                            onkeydown="blockNegative(event)"
+                                            oninput="limitInputLengthAndMaxValue(event)"
+                                            placeholder="VD: 8"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-add-box">
+                            <div class="btn-box"></div>
+                            <div class="btn-box">
+                                <button
+                                    onclick="addValStd()"
+                                    class="cus-btn random-btn"
+                                >
+                                    <div class="center-btn">
+                                        <i class="fa-solid fa-rotate-right"></i>
+                                        Random
+                                    </div>
+                                </button>
+                                <button
+                                    onclick="clearInputs() "
+                                    class="cus-btn clear-btn"
+                                >
+                                    <div class="center-btn">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                        Clear
+                                    </div>
+                                </button>
+                                <button
+                                    onclick="addStudent() "
+                                    class="cus-btn add-btn"
+                                >
+                                    <div class="center-btn">
+                                        <i class="fa-solid fa-plus"></i>
+                                        Add
+                                    </div>
+                                </button>
+
+                                <button
+                                    onclick="hidePopUpByOvl() "
+                                    class="cus-btn cancel-btn"
+                                >
+                                    <div class="center-btn">
+                                        <i class="fa-solid fa-xmark"></i>
+                                        Cancel
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="toastMsg"></div>
+
+        <table id="secEditStd" class="sec-edit-std sec-input">
+            <tr>
+                <td colspan="2">
+                    <h3 class="p-10 text-center">
+                        Cập nhật thông tin học viên
+                    </h3>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="editStdId">Mã số sinh viên</label>
+                </th>
+                <td>
+                    <input
+                        class="input"
+                        id="editStdId"
+                        type="text"
+                        maxlength="6"
+                        placeholder="VD: HV0001"
+                    />
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="editName">Họ và tên học sinh</label>
+                </th>
+                <td>
+                    <input
+                        class="input"
+                        id="editName"
+                        type="text"
+                        maxlength="42"
+                        placeholder="VD: Nguyễn Văn A"
+                    />
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="editDob">Ngày tháng năm sinh</label>
+                </th>
+                <td>
+                    <input
+                        class="input"
+                        id="editDob"
+                        type="date"
+                        max="2023-12-30"
+                    />
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="editScrOne">Điểm thi môn số 1</label>
+                </th>
+                <td>
+                    <input
+                        class="input"
+                        id="editScrOne"
+                        type="number"
+                        min="0"
+                        max="10"
+                        onkeydown="blockNegative(event)"
+                        oninput="limitInputLengthAndMaxValue(event)"
+                        placeholder="VD: 8"
+                    />
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="editScrTwo">Điểm thi môn số 2</label>
+                </th>
+                <td>
+                    <input
+                        class="input"
+                        id="editScrTwo"
+                        type="number"
+                        min="0"
+                        max="10"
+                        onkeydown="blockNegative(event)"
+                        oninput="limitInputLengthAndMaxValue(event)"
+                        placeholder="VD: 8"
+                    />
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="editScrThree">Điểm thi môn số 3</label>
+                </th>
+                <td>
+                    <input
+                        class="input"
+                        id="editScrThree"
+                        type="number"
+                        min="0"
+                        max="10"
+                        onkeydown="blockNegative(event)"
+                        oninput="limitInputLengthAndMaxValue(event)"
+                        placeholder="VD: 8"
+                    />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <button class="cus-btn update-btn" id="updateStd">
+                        <i class="fa-solid fa-check"></i>
+                        Update
+                    </button>
+                    <button onclick="hidePopup() " class="cus-btn cancel-btn">
+                        <i class="fa-solid fa-xmark"></i>
+                        Cancel
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        <div class="cont-btn">
+            <div class="opti-btn">
+                <button onclick="addValStd(1)" class="cus-add add-list-std">
+                    <p class="sug-btn">Dummy Students</p>
+                    <i class="fas fa-upload"></i>
+                </button>
+            </div>
+            <div class="opti-btn">
+                <button
+                    onclick="showListStds()"
+                    id="showStdBtn"
+                    class="cus-add show-list-std"
+                >
+                    <p class="sug-btn">Show List Students</p>
+                    <i class="fa-solid fa-list"></i>
+                </button>
+            </div>
+            <div class="opti-btn">
+                <button onclick="showAddStdSec()" class="cus-add add-a-std">
+                    <p class="sug-btn">Add A Student</p>
+                    <i class="ti-plus"></i>
+                </button>
+            </div>
+        </div>
+
+        <br />
+        <div class="cus-input-cont">
+            <div class="cus-form">
+                <input
+                    type="text"
+                    id="txtSearch"
+                    placeholder="Enter your search"
+                    onkeydown="handlePressEnter()"
+                />
+                <button onclick="srcCombined()" class="cus-btn-src">
+                    <i class="ti-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="center-table">
+            <table id="showResult">
+                <tr class="table-result">
+                    <th class="table-title">Mã số sinh viên</th>
+                    <th class="table-title">Họ tên</th>
+                    <th class="table-title">Ngày sinh</th>
+                    <th class="table-title">Điểm môn thi số 1</th>
+                    <th class="table-title">Điểm môn thi số 2</th>
+                    <th class="table-title">Điểm môn thi số 3</th>
+                    <th class="table-title">Điểm trung bình</th>
+                    <th class="table-title">Thao tác</th>
+                </tr>
+
+                <tr>
+                    <th colspan="8">
+                        <h3 class="p-10">No Students Available</h3>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+    </body>
+</html>
